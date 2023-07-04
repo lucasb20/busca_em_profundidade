@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 #ifndef GRAFO_HPP
 #define GRAFO_HPP
@@ -9,9 +10,11 @@ class Grafo {
         unsigned used;
         Grafo **array_child;
 
-        Grafo(unsigned qtd) {
+        Grafo(unsigned qtd,unsigned x) {
             this->qtd = qtd;
-            this->array_child = (Grafo**) calloc(qtd,sizeof(Grafo*));
+            this->x = x;
+            this->array_child = nullptr;
+            if(qtd != 0)this->array_child = (Grafo**) calloc(qtd,sizeof(Grafo*));
             this->used = 0;
         }
 
@@ -23,7 +26,11 @@ class Grafo {
                 std::cout << "Espaço insuficiênte.\n";
             }
         }
+
+        void anull_child(){
+            free(this->array_child);
+        }
 };
 #endif
 
-void busca_em_profundidade(Grafo,unsigned,unsigned*);
+int busca_em_profundidade(Grafo,unsigned,int*);
