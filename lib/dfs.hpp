@@ -1,4 +1,4 @@
-typedef struct{
+typedef struct grafo{
     unsigned char x;
     grafo *prox;
 }grafo;

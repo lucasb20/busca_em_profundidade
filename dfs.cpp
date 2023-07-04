@@ -1,4 +1,4 @@
-#include "lib/dfs.h"
+#include "lib/dfs.hpp"
 
 void busca_em_profundidade(){
 

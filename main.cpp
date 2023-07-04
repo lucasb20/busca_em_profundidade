@@ -1,4 +1,4 @@
-#include "dfs.h"
+#include "lib/dfs.hpp"
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -14,14 +14,17 @@ int main(int argc, char**argv){
     unsigned int qtd = atoi(*(argv+1));
     grafo *vertice = (grafo*) calloc(qtd,sizeof(grafo));
 
-    char **matriz;
-    matriz = (char **) malloc(qtd*sizeof(char*));
-    for(int i = 0; i < qtd; i++) *(matriz+i) = (char*) calloc(qtd,sizeof(char));
+    unsigned char **matriz;
+    matriz = (unsigned char **) malloc(qtd*sizeof(unsigned char*));
+    for(int i = 0; i < qtd; i++) *(matriz+i) = (unsigned char*) calloc(qtd,sizeof(unsigned char));
 
-    int aux;
+    int k = -1;
     for(int i=0; i<qtd; i++){
+        k = rand()%qtd;
         vertice[i].x = rand() % 256;
-        vertice[i].prox = &vertice[rand()%sizeof(vertice)];
+        vertice[i].prox = &vertice[k];
+        matriz[i][k] = 1;
+        matriz[k][i] = 1;
     }
 
     free(vertice);

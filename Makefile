@@ -1,6 +1,6 @@
 all: hello
 
-hello: main.o dfs.obj
+hello: main.obj dfs.obj
 	g++ -o hello main.obj dfs.obj
 
 main.obj: main.cpp
