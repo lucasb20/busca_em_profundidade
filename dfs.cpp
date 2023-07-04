@@ -12,8 +12,7 @@ int busca_em_profundidade(Grafo *a, unsigned x, size_t *deep){
     }
     
     if(a->array_child == nullptr){
-        *deep--;
-        std::cout << "Back" << '\n';
+        (*deep)--;
         return 0;
     }
     else{
@@ -24,5 +23,6 @@ int busca_em_profundidade(Grafo *a, unsigned x, size_t *deep){
         }
     }
 
+    (*deep)--;
     return 0;
 }

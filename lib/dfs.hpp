@@ -18,9 +18,9 @@ class Grafo {
             this->used = 0;
         }
 
-        void insertChild(Grafo child){
+        void insertChild(Grafo*child){
             if(this->used < this->qtd){
-                this->array_child[this->used] = &child;
+                this->array_child[this->used] = child;
                 this->used++;
             }
             else{
