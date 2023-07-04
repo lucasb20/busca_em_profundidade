@@ -1,14 +1,23 @@
 #include "lib/dfs.hpp"
+#include <iostream>
 
-void busca_em_profundidade(){
-
+void print_all_x(grafo a, unsigned n){
+    grafo *aux = a.prox;
+    printf("Grafo: %u\t[%p]\n",a.x,&a);
+    for(int i = 0; i < n; i++){
+        aux = aux->prox;
+        printf("Grafo: %u\t[%p]\n",aux->x,aux);
+    }
 }
 
-bool search_in_vector(unsigned char* array, int tam, unsigned char element){
-    int k = 0;
-    for(int i=0;i<tam;i++){
-        if(array[i] == element)k++;
+unsigned identf_profundidade(grafo ini){
+    grafo *aux = &ini;
+    unsigned k = 0;
+    while(true){
+        printf("Grafo ->\tValor: %u\tDeep: %u\n",aux->x,k);
+        if(aux->prox==nullptr)break;
+        aux = aux->prox;
+        k++;
     }
-
-    return (k>0)?(true):(false);
+    return k;
 }
